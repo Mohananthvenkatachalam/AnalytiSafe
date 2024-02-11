@@ -1,23 +1,13 @@
-import { useState } from "react";
-import Navbar from "./components/Navbar";
-import Dashboard from "./components/Dashboard";
-import "./App.css";
+import { RouterProvider } from 'react-router-dom'
+import router from './routes.jsx'
 
-function App() {
-  const [count, setCount] = useState(0);
+import { Toaster } from 'sonner'
 
+export default function App() {
   return (
     <>
-      <div className="flex">
-        {/* Side Navigation Bar */}
-        <Navbar />
-        {/* Main component on basis of selected navigation from nav bar */}
-        <main className="grow">
-          <Dashboard />
-        </main>
-      </div>
+      <RouterProvider router={router} />
+      <Toaster />
     </>
-  );
+  )
 }
-
-export default App;
