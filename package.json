@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "apexcharts": "^3.45.2",
+    "axios": "^1.6.8",
+    "axois": "^0.0.1-security",
     "chart.js": "^4.4.0",
     "framer-motion": "^10.16.1",
     "lucide-react": "^0.269.0",
