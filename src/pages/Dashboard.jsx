@@ -209,16 +209,157 @@ function Weather() {
   )
 }
 
+function JunctionControl() {
+  const [data, setData] = React.useState([])
+
+  React.useEffect(() => {
+    axios.get('/api/Junction_Control.json').then((res) => {
+      setData(res.data)
+    })
+  }, [])
+
+  return (
+    <div>
+      <ReactApexChart
+        type="bar"
+        options = {{
+          plotOptions: {
+            bar: {distributed: true}
+          }
+        }}
+        series={[{ data }]}
+      />
+    </div>
+  )
+}
+
+
+function MainCauseGraph() {
+  const [data, setData] = React.useState([])
+
+  React.useEffect(() => {
+    axios.get('/api/Main_Cause.json').then((res) => {
+      setData(res.data)
+    })
+  }, [])
+
+  return (
+    <div>
+      <ReactApexChart
+        type="bar"
+        options={{
+          chart: {
+            type: 'bar',
+            horizontal: true,
+          },
+          yaxis: {
+            reversed: false,
+          },
+        }}
+        series={[{ data }]}
+      />
+    </div>
+  )
+}
+function RoadConditionGraph() {
+  const [data, setData] = React.useState([])
+
+  React.useEffect(() => {
+    axios.get('/api/Road_Condition.json').then((res) => {
+      setData(res.data)
+    })
+  }, [])
+
+  return (
+    <div>
+      <ReactApexChart
+        type="bar"
+        options={{
+          chart: {
+            type: 'bar',
+            horizontal: true,
+          },
+          yaxis: {
+            reversed: false,
+          },
+        }}
+        series={[{ data }]}
+      />
+    </div>
+  )
+}
+
+function RoadTypeGraph() {
+  const [data, setData] = React.useState([])
+
+  React.useEffect(() => {
+    axios.get('/api/Road_Type.json').then((res) => {
+      setData(res.data)
+    })
+  }, [])
+
+  return (
+    <div>
+      <ReactApexChart
+        type="bar"
+        options={{
+          plotOptions: {
+            bar: {
+              horizontal: true, 
+              stroke: {
+                curve: 'stepline',
+              }
+            }
+          }
+        }}
+        series={[{ data }]}
+      />
+    </div>
+  )
+}
+
+function SurfaceConditionGraph() {
+  const [data, setData] = React.useState([])
+
+  React.useEffect(() => {
+    axios.get('/api/Surface_Condition.json').then((res) => {
+      setData(res.data)
+    })
+  }, [])
+
+  return (
+    <div>
+      <ReactApexChart
+        type="bar"
+        options={{
+          plotOptions: {
+            bar: {
+              horizontal: true, 
+              stroke: {
+                curve: 'stepline',
+              }
+            }
+          }
+        }}
+        series={[{ data }]}
+      />
+    </div>
+  )
+}
 function Dashboard() {
   return (
     <div className="flex flex-col py-5 px-16 h-screen overflow-y-auto w-full">
-      {/* <DistrictGraph /> */}
-      {/* <YearGraph /> */}
-      {/* <AccidentClassification /> */}
-      {/* <SeverityGraph /> */}
-      {/* <AccidentSpot /> */}
-      {/* <Weather /> */}
-      {/* <AccidentLocation /> */}
+      <DistrictGraph />
+      <YearGraph />
+      <AccidentClassification />
+      <SeverityGraph />
+      <AccidentSpot />
+      <Weather />
+      <AccidentLocation />
+      <JunctionControl/>
+      <MainCauseGraph/>
+      <RoadConditionGraph/>
+      <RoadTypeGraph/>
     </div>
   )
 }
